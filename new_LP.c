@@ -306,6 +306,8 @@ double TwoStageMethod(double** Matrix, int m, int n, double* obj){
     supporthead->next = NULL;
     FindUnitVector(LPMatrix, supporthead, supportobj, supportm, supportn);
     double** AfterMatrix = StageONE(LPMatrix, supportobj, supportm, supportn, supporthead, needVARSnum);
+    if(!AfterMatrix)
+        return -1;
     Unit* Afterhead = (Unit*)malloc(sizeof(Unit));
     Afterhead->next = NULL;
     FindUnitVector(AfterMatrix, Afterhead, obj, m ,n);
